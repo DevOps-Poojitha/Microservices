@@ -5,16 +5,24 @@ pipeline  {
       steps  {
          script  {
             bat  "mvn clean install"
-            echo  "Stage 1 Completed"
             }
           }
         }
-     stage("stage2")  {
-      steps  {
-         script  {
-            bat  "mvn clean install"
-            }
+    stage("parallel stage")  {
+    parallel  {
+      stage("stage2")  {
+        steps  {
+          echo "On stage 2"
+          sleep 5
           }
         }
+      stage("stage3")  {
+        steps  {
+          echo "On stage 3"
+          sleep 10
+            }
+          }
+       }
      }
- }
+   }
+}
