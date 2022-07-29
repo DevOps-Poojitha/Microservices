@@ -13,6 +13,8 @@ pipeline  {
       steps  {
          script  {
             bat  "mvn clean install"
+            echo  "Stage 2 Completed"
+            echo  "Webhook verified"
             }
           }
         }
